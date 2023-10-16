@@ -23,6 +23,8 @@ int _printf(const char *format, ...)
 		else
 		{
 			count++;
+			if (format[i + 1] == '\0')
+				return (-1);
 			switch (format[++i])
 			{
 				case 'c':
@@ -31,11 +33,17 @@ int _printf(const char *format, ...)
 				case 's':
 					str = va_arg(arg, char *);
 					if (str == NULL)
-						str = ("null");
+						str = ("(null)");
 					count += str_write(str);
 					break;
 				case '%':
-					putchar('%');
+					_putchar('%');
+					break;
+				case 'd':
+					count += prInt(va_arg(arg, int));
+					break;
+				case 'i':
+					count += prInt(va_arg(arg, int));
 					break;
 				default:
 					--i;
