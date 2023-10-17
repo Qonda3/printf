@@ -35,14 +35,12 @@ int str_write(char *string)
 	--i;
 	return (i);
 }
-
 /**
  * prInt - prints an integer to stdout
  * @n: integer to be printed
  *
- * Return: number of characters/integers printed
+ * Return: number of digits/characters printed
  */
-
 int prInt(int n)
 {
 	int i = 0, base = 10, f_num;
@@ -53,18 +51,15 @@ int prInt(int n)
 		n = -n;
 		i++;
 	}
-
 	if (n >= 0 && n <= 10)
 	{
 		_putchar(n + '0');
-		return (++i);
+		return (i);
 	}
-
 	while (n / base >= 10)
 	{
 		base = base * 10;
 	}
-
 	while (base != 0)
 	{
 		f_num = n / base;
@@ -73,5 +68,5 @@ int prInt(int n)
 		_putchar(f_num + '0');
 		i++;
 	}
-	return (i);
+	return (--i);
 }
